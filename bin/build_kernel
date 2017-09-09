@@ -1,16 +1,36 @@
 #!/bin/bash
 
+#Take linux version from user
 echo "Enter the kernel version to build from www.kernel.org:"
 read LINUX
 
+#Install few packages before starting
 sudo apt-get update
 sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc
+
+#Get the file from www.kernel.org
 wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-$LINUX.tar.xz -P ~/
+
+#Unzip the file using the following command
 tar -xvf ~/linux-$LINUX.tar.xz
+
+#Make a copy of your previous config file to select which modules to include
 sudo cp /boot/config-$(uname -r) .config
+
+#Go into your unzipped folder to start the build
 cd ~/linux-$LINUX
+
+#Use default configuration so that it does not build for all config files
 sudo make defconfig
+
+#Using -j2 we use two jobs to run these process
 sudo make -j2 && sudo make modules_install -j2 && sudo make install -j2
+
+#For the new kernel to be used on next boot up we use this
 sudo update-initramfs -c -k $LINUX
+
+#update grub to look for the kernels present
 sudo update-grub
+
+#reboot the system to use the new kernel
 reboot                        
