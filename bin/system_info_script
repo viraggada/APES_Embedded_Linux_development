@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+
+import subprocess
+import platform
+import sys
+
+#Read the contents of this file and seperate elements at space(" ") into an array
+with open("/proc/version","r") as f:
+  array = []
+  for line in f:
+    array=line.split(' ')
+
+#Open the new text file in which info is to be added
+file = open("System_info_script.txt","w")
+
+#OS info from 'uname -o'
+os = subprocess.check_output("uname -o", shell=True)
+info = "Operating System Type: " + os + " \n"
+file.write(info)
+
+#OS Distribution info from the array
+info = "OS Distribution : " + array[8] +" "+ array[9] + " \n"
+file.write(info)
+
+#Kernel version from 'uname -r'
+version = subprocess.check_output("uname -r", shell=True)
+info = "Kernel version : " + version + " \n"
+file.write(info)
+
+#Kernel build info from /platform.uname'
+info = "Info on kernel build : " + str(platform.uname()) + " \n"
+file.write(info)
+
+#GCC version from array
+info = "Kernel gcc version : " + array[6] + array[7] + "\n"
+file.write(info)
+
+#Build time from 'uname -v'
+time = subprocess.check_output("uname -v", shell=True)
+info = "Kernel Build Time : " + time + " \n"
+file.write(info)
+
+#System Arch Info from 'lscpu'
+info = "System Architecture Information : " + "\n"
+file.write(info)
+file.close()
+
+subprocess.Popen("lscpu",shell=True,stdout=open("System_info_script.txt","a"))
