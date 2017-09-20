@@ -23,3 +23,77 @@ File structure:
 
 * Makefile: Makefile required to run unit test on our source files.
 
+Function info:
+
+Circular Buffer test functions:
+
+* test_circbuff_allocate_free() - Function to test cbuffer_memoryAllocate
+     function and cbuffer_Destroy to check if buffer function can be used
+     to allocate and free memory from heap
+* test_circbuff_add_invalid_pointer() - Function to test if circbuff function
+     can handle invalid pointer(NULL)
+* test_circbuff_add_over_fill() - Function to test if circular buffer is full
+    and return corresponding enum
+* test_circbuff_add_available() - Function to test if circular buffer has
+    space available and return corresponding enum
+* test_circbuff_buff_full() - Function to test if circular buffer is full
+    and return corresponding enum
+* test_circbuff_full_invalid_pointer() - Function to test if circbuff function
+    can handle invalid pointer(NULL)
+* test_circbuff_full_available() - Function to test if circular buffer has
+    space available and return corresponding enum
+* test_circbuff_remove_invalid_pointer() - Function to test if circbuff function
+    can handle invalid pointer(NULL)
+* test_circbuff_remove_over_remove() - Function to test if circbuff function
+    can handle removing more data than present
+* test_circbuff_remove_available() - Function to test if circular buffer has
+    space available and return corresponding enum
+* test_circbuff_empty_invalid_pointer() - Function to test if circbuff function
+    can handle invalid pointer(NULL)
+* test_circbuff_empty_available() - Function to test if circular buffer has
+    space available and return corresponding enum
+* test_circbuff_add_wrap() - Function to test if circular buffer can wrap
+    near the boundary when data is added to it
+* test_circbuff_remove_wrap() - Function to test if circular buffer can
+    wrap near the boundary when data is removed from it
+
+Double Linked List test functions:
+
+* test_dll_insert_first() - Function to test if linked list function can
+    handle adding data at the first position
+* test_dll_insert_middle() - Function to test if linked list function can
+    handle adding data in the middle of the list
+* test_dll_insert_last() - Function to test if linked list function
+    can handle adding data at the last position
+* test_dll_add_invalid_position() - Function to test if linked list function
+    can handle adding data at wrong index
+* test_dll_remove_first() - Function to test if linked list function
+    can handle removind data from the first position
+* test_dll_remove_last() - Function to test if linked list function can handle
+    removing data from the last position
+* test_dll_remove_middle() - Function to test if linked list function can
+    handle removing data from the middle of the list
+* test_dll_remove_invalid_remove_position() - Function to test if linked list
+    function can handle removing data from the wrong index
+* test_dll_remove_invalid_list() - Function to test if linked list function
+    can handle invalid pointer(NULL)
+* test_dll_destroy_invalid_list() - Function to test if linked list function
+    can handle invalid pointer(NULL)
+* test_dll_destroy_valid() - Function to test if linked list function can
+    destroy a valid list
+* test_dll_size_valid() -Function to test if linked list function can find
+    the size of a valid list
+* test_dll_size_invalid() - Function to test if linked list function
+    can handle invalid pointer(NULL)
+* test_dll_search_invalid_list() - Function to test if linked list function
+    can handle invalid pointer(NULL)
+* test_dll_search_valid_data() - Function to test if linked list function can
+    find the data from a valid list
+* test_dll_search_invalid_data() - Function to test if linked list function can
+    handle an invalid data
+
+Execution:
+To run test for Circular Buffer - $make test TEST=CB
+To run test for Double Linked List - $make test TEST=DLL
+To run test for both structure functions - $make test TEST=ALL
+Default "$make test" runs test for both the structures
