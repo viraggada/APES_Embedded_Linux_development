@@ -1,0 +1,1 @@
+cmd_/media/sf_APESDshared/HW3/kernel_ll/kernelLL.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /media/sf_APESDshared/HW3/kernel_ll/kernelLL.ko /media/sf_APESDshared/HW3/kernel_ll/kernelLL.o /media/sf_APESDshared/HW3/kernel_ll/kernelLL.mod.o ;  true

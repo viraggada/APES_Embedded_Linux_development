@@ -1,0 +1,1 @@
+cmd_/media/sf_APESDshared/HW3/kthread_module/kthreadProfile.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /media/sf_APESDshared/HW3/kthread_module/kthreadProfile.ko /media/sf_APESDshared/HW3/kthread_module/kthreadProfile.o /media/sf_APESDshared/HW3/kthread_module/kthreadProfile.mod.o ;  true
